@@ -5,8 +5,8 @@
   <title>Exam Results</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0078D4">
-<style>
+  <meta name="theme-color" content="#0078D4">
+  <style>
     body {
       font-family: Arial, sans-serif;
       background: #f4f4f4;
@@ -42,10 +42,8 @@
       color: red;
       font-weight: bold;
     }
-
-    /* Modal Styling */
     .modal {
-      display: block;
+      display: none;
       position: fixed;
       z-index: 1000;
       left: 0;
@@ -56,9 +54,7 @@
       background-color: rgba(0, 0, 0, 0.6);
       justify-content: center;
       align-items: center;
-      display: none;
     }
-
     .modal-content {
       background-color: #fff;
       margin: 15% auto;
@@ -69,15 +65,12 @@
       border-radius: 10px;
       text-align: center;
     }
-
     .modal-content h2 {
       color: #0078D4;
     }
-
     .modal-content p {
       margin: 20px 0;
     }
-
     .modal-content button {
       padding: 10px 20px;
       background-color: #0078D4;
@@ -86,7 +79,6 @@
       border-radius: 5px;
       cursor: pointer;
     }
-
     .modal-content button:hover {
       background-color: #005fa3;
     }
@@ -114,7 +106,7 @@
     <th>Score</th>
     <th>Result</th>
   </tr>
-  <!-- Passed Candidates (8) -->
+  <!-- Passed Candidates -->
   <tr><td>1</td><td>Anna Wambui</td><td>******11</td><td>85</td><td class="pass">Pass</td></tr>
   <tr><td>2</td><td>David Kamau</td><td>******22</td><td>76</td><td class="pass">Pass</td></tr>
   <tr><td>3</td><td>Grace Wanjiku</td><td>******12</td><td>88</td><td class="pass">Pass</td></tr>
@@ -124,7 +116,7 @@
   <tr><td>7</td><td>Peter Mwangi</td><td>******18</td><td>78</td><td class="pass">Pass</td></tr>
   <tr><td>8</td><td>Samuel Cheruiyot</td><td>******34</td><td>65</td><td class="pass">Pass</td></tr>
 
-  <!-- Failed Candidates (34) -->
+  <!-- Failed Candidates -->
   <tr><td>9</td><td>Abigail Wairimu</td><td>******64</td><td>45</td><td class="fail">Fail</td></tr>
   <tr><td>10</td><td>Benjamin Kamau</td><td>******56</td><td>49</td><td class="fail">Fail</td></tr>
   <tr><td>11</td><td>Charles Otieno</td><td>******21</td><td>38</td><td class="fail">Fail</td></tr>
@@ -143,7 +135,7 @@
   <tr><td>24</td><td>Naomi Kamau</td><td>******56</td><td>41</td><td class="fail">Fail</td></tr>
   <tr><td>25</td><td>Patrick Otieno</td><td>******33</td><td>36</td><td class="fail">Fail</td></tr>
   <tr><td>26</td><td>Pauline Wambui</td><td>******67</td><td>42</td><td class="fail">Fail</td></tr>
-  <tr><td>27</td><td>Phyllis Njeri</td><td>******89</td><td>39</td><td class="fail">Fail</td></tr>
+  <tr><td>27</td><td>Abednego Muhuyi</td><td>******28</td><td>36</td><td class="fail">Fail</td></tr>
   <tr><td>28</td><td>Ruth Wanjiku</td><td>******72</td><td>44</td><td class="fail">Fail</td></tr>
   <tr><td>29</td><td>Samuel Wambua</td><td>******19</td><td>46</td><td class="fail">Fail</td></tr>
   <tr><td>30</td><td>Sharon Njeri</td><td>******41</td><td>47</td><td class="fail">Fail</td></tr>
@@ -151,8 +143,19 @@
   <tr><td>32</td><td>Teresa Wanjiku</td><td>******92</td><td>33</td><td class="fail">Fail</td></tr>
   <tr><td>33</td><td>Thomas Mwangi</td><td>******77</td><td>32</td><td class="fail">Fail</td></tr>
   <tr><td>34</td><td>Victoria Otieno</td><td>******22</td><td>37</td><td class="fail">Fail</td></tr>
+  <tr><td>35</td><td>Phyllis Njeri</td><td>******89</td><td>39</td><td class="fail">Fail</td></tr>
 </table>
 
 <script>
+  window.onload = function () {
+    document.getElementById("disclaimerModal").style.display = "flex";
+  };
+
+  function acknowledgeDisclaimer() {
+    document.getElementById("disclaimerModal").style.display = "none";
+    document.getElementById("resultsTable").style.display = "table";
+  }
+</script>
+
 </body>
 </html>
