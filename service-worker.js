@@ -1,24 +1,19 @@
-const CACHE_NAME = 'exam-cache-v1';
-const urlsToCache = [
-  'index.html',
-  'login.html',
-  'exam.html',
-  'instructions.html',
-  'results.html',
-  'instructions (1).html',
-  'manifest.json',
-  'icon-192.png',
-  'icon-512.png'
-];
-
-self.addEventListener('install', event => {
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+    caches.open("balance-app-v1").then(cache => {
+      return cache.addAll([
+        "index.html",
+        "manifest.json",
+        "icon.png"
+      ]);
+    })
   );
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
   );
 });
