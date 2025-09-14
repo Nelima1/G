@@ -13,7 +13,8 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 500; /* medium weight like iOS */
       background-color: #555;
       color: white;
       display: flex;
@@ -25,24 +26,29 @@
       padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
     .message {
-      margin-bottom: 40px;
+      flex: 1; /* pushes content to center */
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-size: 18px;
       line-height: 1.5em;
+      padding: 0 20px;
     }
     .buttons {
       display: flex;
-      gap: 10px;
-      width: 90%;
-      max-width: 400px;
+      width: 100%;
+      max-width: 600px;
+      position: fixed;
+      bottom: env(safe-area-inset-bottom);
+      left: 0;
     }
     button {
       flex: 1;
-      padding: 15px 25px;
+      padding: 18px 0;
       border: none;
       font-size: 18px;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
-      border-radius: 6px;
     }
     .dismiss {
       background-color: white;
@@ -75,11 +81,10 @@
 
     // Inject message
     const messageText = `
-      The Balance For 01101*****7001: 
-      Book Balance KES ${formatKES(balance)}, 
-      Available Balance KES ${formatKES(balance)}, 
-      E-Loan Limit KES ${formatKES(loanLimit)}.
-      <br><br>
+      The Balance For 01101*****7001:<br>
+      Book Balance KES ${formatKES(balance)},<br>
+      Available Balance KES ${formatKES(balance)},<br>
+      E-Loan Limit KES ${formatKES(loanLimit)}.<br><br>
       Do you want another transaction?<br>
       1. Yes<br>
       2. No
