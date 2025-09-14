@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Balance Screen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#555555">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.png">
+
   <style>
     body {
       margin: 0;
@@ -15,6 +22,7 @@
       align-items: center;
       height: 100vh;
       text-align: center;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
     .message {
       margin-bottom: 40px;
@@ -24,6 +32,8 @@
     .buttons {
       display: flex;
       gap: 10px;
+      width: 90%;
+      max-width: 400px;
     }
     button {
       flex: 1;
@@ -32,6 +42,7 @@
       font-size: 18px;
       font-weight: bold;
       cursor: pointer;
+      border-radius: 6px;
     }
     .dismiss {
       background-color: white;
@@ -53,16 +64,16 @@
   </div>
 
   <script>
-    // Values
+    // Balance values
     const balance = 6424918.42;
     const loanLimit = balance * 1.5;
 
-    // Format as KES with commas
+    // Format with commas
     function formatKES(amount) {
       return amount.toLocaleString("en-KE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
-    // Message
+    // Inject message
     const messageText = `
       The Balance For 01101*****7001: 
       Book Balance KES ${formatKES(balance)}, 
@@ -73,15 +84,21 @@
       1. Yes<br>
       2. No
     `;
-
     document.getElementById("message").innerHTML = messageText;
 
-    // Button Actions
+    // Button actions
     function dismiss() {
       alert("Session dismissed ❌");
     }
     function reply() {
       alert("You chose to reply ✉️");
+    }
+
+    // Register Service Worker
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("Service Worker Registered"))
+        .catch(err => console.error("SW error:", err));
     }
   </script>
 
